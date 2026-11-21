@@ -130,6 +130,9 @@ dds.forEach(d=>{const b=d.querySelector(".ddb");b.onclick=()=>{const o=!d.classL
 document.addEventListener("click",e=>{if(!e.target.closest(".dd"))closeAll()});
 document.querySelectorAll(".menu a").forEach(a=>a.addEventListener("click",()=>{hd.classList.remove("open");bg.setAttribute("aria-expanded","false");closeAll()}));
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){hd.classList.remove("open");closeAll()}});
+const cg=$("#cgal"),cph=DATA.communityPhotos||[];
+cph.slice(0,3).forEach(p=>{const i=new Image();i.src=p.src;i.alt=p.alt||"Community award event";i.loading="lazy";cg.append(i)});
+if(!cph.length)cg.remove();
 
 const f=$("#cform");
 if(f){f.onsubmit=async e=>{e.preventDefault();const st=$("#cstatus");st.textContent="Sending...";
