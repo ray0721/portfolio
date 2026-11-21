@@ -5,10 +5,10 @@ export function initPortfolio(DATA){
 const $=s=>document.querySelector(s),el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!==undefined)e.textContent=h;return e};
 // theme
 const root=document.documentElement;
-$("#theme").onclick=()=>{const dark=getComputedStyle(root).colorScheme==="dark";root.dataset.theme=dark?"light":"dark"};
+$("#theme").onclick=()=>{const dark=getComputedStyle(root).colorScheme==="dark";root.dataset.theme=dark?"light":"dark";try{localStorage.setItem("theme",root.dataset.theme)}catch(e){}};
 // socials, cv, mail
 Object.entries(DATA.links).forEach(([k,u])=>{if(!u)return;const a=el("a","",k);a.href=u;a.target="_blank";a.rel="noopener noreferrer";$("#soc").append(a)});
-if(DATA.photo){$("#ph").style.backgroundImage="url('"+DATA.photo+"')";$("#ph").textContent=""}
+if(DATA.photo){const ph=$("#ph"),im=new Image();im.alt="Md Rayhan Hossain";im.onload=()=>{ph.textContent="";ph.append(im)};im.src=DATA.photo}
 if(DATA.cvUrl){$("#cv").href=DATA.cvUrl}else{$("#cv").style.display="none"}
 if(DATA.email){$("#mail").href="mailto:"+DATA.email;$("#mailnote").textContent=DATA.email}else{$("#mailnote").textContent="Add your contact email in DATA.email to activate this button."}
 // network
