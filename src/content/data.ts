@@ -1,7 +1,7 @@
 // EDIT THIS FILE to update the site content.
 /* ===== EDIT THIS BLOCK TO UPDATE THE SITE ===== */
 export const DATA: any = {
- email:"",            // your verified contact email
+ email:"hmrayhan07@gmail.com",            // your verified contact email
  photo:"/rayhan.jpg",            // portrait image URL or path, e.g. "images/rayhan.jpg"
  cvUrl:"",            // link to your CV PDF
  links:{GitHub:"https://github.com/ray0721",LinkedIn:"https://www.linkedin.com/in/ray-07/","Google Scholar":"https://scholar.google.com/citations?hl=en&user=vi3qm9wAAAAJ",ORCID:"https://orcid.org/0009-0008-6413-5875",ResearchGate:"https://www.researchgate.net/profile/Md-Rayhan-Hossain-3","Tableau Public":"https://public.tableau.com/app/profile/md.rayhan.hossain3089/vizzes"},
