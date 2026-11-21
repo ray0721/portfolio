@@ -169,6 +169,9 @@ header{background:color-mix(in srgb,var(--bg) 88%,transparent)}
 }
 .avatar{width:120px;height:120px;overflow:hidden}
 .avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+@media(min-width:901px){.ddb{display:inline-flex;align-items:center;white-space:nowrap;line-height:1.2}.menu>a{white-space:nowrap}}
+.cgal{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-top:12px}
+.cgal img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
 
 .cform{display:grid;gap:12px;max-width:560px;margin:28px auto 0;text-align:left;position:relative}
 .cform input,.cform select,.cform textarea{font:inherit;color:var(--tx);background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
