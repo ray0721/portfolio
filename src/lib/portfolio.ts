@@ -10,7 +10,7 @@ $("#theme").onclick=()=>{const dark=getComputedStyle(root).colorScheme==="dark";
 Object.entries(DATA.links).forEach(([k,u])=>{if(!u)return;const a=el("a","",k);a.href=u;a.target="_blank";a.rel="noopener noreferrer";$("#soc").append(a)});
 if(DATA.photo){const ph=$("#ph"),im=new Image();im.alt="Md Rayhan Hossain";im.onload=()=>{ph.textContent="";ph.append(im)};im.src=DATA.photo}
 if(DATA.cvUrl){$("#cv").href=DATA.cvUrl}else{$("#cv").style.display="none"}
-if(DATA.email){$("#mail").href="mailto:"+DATA.email;$("#mailnote").textContent=DATA.email}else{$("#mailnote").textContent="Add your contact email in DATA.email to activate this button."}
+if(DATA.email){$("#mail").href="mailto:"+DATA.email;$("#mailnote").textContent=DATA.email}else{$("#mailnote").textContent=""}
 // network
 const N={ai:["Artificial intelligence",110,60,"Applying AI methods to business problems such as forecasting and customer value."],
 ml:["Machine learning",210,120,"Models that learn from data, including classification and sequence models."],
@@ -34,15 +34,15 @@ Object.entries(N).forEach(([id,[t,x,y]])=>{const g=S("g",{class:"node","data-id"
 g.append(S("circle",{cx:x,cy:y,r:9}));const tx=S("text",{x:x,y:y+25,"text-anchor":"middle"});tx.textContent=t;g.append(tx);
 g.onclick=()=>pick(id);g.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(id)}};$("#nodes").append(g)});
 // projects
-const cats=["All",...new Set(DATA.projects.map(p=>p[1]))];let cur="All";
-function drawP(){const tl=$("#tool").value,D=DATA.projectDetails;$("#plist").replaceChildren(...DATA.projects.filter(p=>(cur==="All"||p[1]===cur)&&(!tl||(D[p[0]]&&D[p[0]].tools&&D[p[0]].tools.includes(tl)))).map(p=>{const li=el("li");const b=el("button","pl",p[0]);b.setAttribute("aria-haspopup","dialog");li.onclick=()=>openP(p[0]);li.append(b,el("span","mono",p[1]+(D[p[0]]?"":" · details coming")));return li}))}
+const cats=["All",...new Set(DATA.projects.filter(p=>DATA.projectDetails[p[0]]).map(p=>p[1]))];let cur="All";
+function drawP(){const tl=$("#tool").value,D=DATA.projectDetails;$("#plist").replaceChildren(...DATA.projects.filter(p=>D[p[0]]&&(cur==="All"||p[1]===cur)&&(!tl||(D[p[0]]&&D[p[0]].tools&&D[p[0]].tools.includes(tl)))).map(p=>{const li=el("li");const b=el("button","pl",p[0]);b.setAttribute("aria-haspopup","dialog");li.onclick=()=>openP(p[0]);li.append(b,el("span","mono",p[1]+(D[p[0]]?"":" · details coming")));return li}))}
 cats.forEach(c=>{const b=el("button","chip",c);b.setAttribute("aria-pressed",c===cur);b.onclick=()=>{cur=c;document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));drawP()};$("#chips").append(b)});drawP();
 // skills
 Object.entries(DATA.skills).forEach(([k,v])=>{const d=el("details");d.append(el("summary","",k));const u=el("ul");v.forEach(i=>u.append(el("li","",i)));d.append(u);$("#skillgrid").append(d)});
 // credentials
 DATA.credentials.forEach(c=>{const d=el("div","cred");d.append(el("h3","",c.title),el("p","mono",c.issuer+" · "+c.date),el("p","",c.note));
 if(c.url){const a=el("a","","Verify credential");a.href=c.url;a.target="_blank";a.rel="noopener noreferrer";d.append(a)}$("#creds").append(d)});
-const add=el("div","cred empty");add.append(el("h3","","Your next credential"),el("p","","Add Google, Oracle, SAP HANA, or other certificates in DATA.credentials, with a verification link where one exists."));$("#creds").append(add);
+
 // publications
 const P=DATA.publications;
 const ini=a=>a[0].split(" ").map(w=>w[0]+".").join(" ");
@@ -103,18 +103,20 @@ DATA.dashboards.forEach(d=>{const c=el("article","labcard");c.append(el("h3","",
  [["description",""],["source","Data source: "],["method","Method: "]].forEach(([k,t])=>{if(d[k])c.append(el("p","",t+d[k]))});
  const ac=el("div","acts");if(bx.firstChild){const fs=el("button","btn","Full screen");fs.onclick=()=>{if(bx.requestFullscreen)bx.requestFullscreen()};ac.append(fs)}
  if(d.url)ac.append(link("Open on Tableau Public",d.url));c.append(ac);$("#labgrid").append(c)});
-if(!DATA.dashboards.length){const c=el("article","labcard empty");c.append(el("h3","","Your first dashboard"),el("p","","Add each Tableau Public dashboard to DATA.dashboards with a title, description, data source, method, and its embed link. It will appear here with a full-screen view."));$("#labgrid").append(c)}
+
 // cv center and professional development
-DATA.cvFiles.forEach(f=>{const d=el("div","cred"+(f.url?"":" empty"));d.append(el("h3","",f.label),el("p","",f.desc));if(f.url)d.append(link("Download PDF",f.url));else d.append(el("p","mono","Add the PDF link in DATA.cvFiles."));$("#cvgrid").append(d)});
+const drop=id=>{const s=document.getElementById(id);if(s)s.remove();document.querySelectorAll('a[href="#'+id+'"]').forEach(a=>a.remove())};
+DATA.cvFiles.filter(f=>f.url).forEach(f=>{const d=el("div","cred");d.append(el("h3","",f.label),el("p","",f.desc),link("Download PDF",f.url));$("#cvgrid").append(d)});
+if(!DATA.cvFiles.some(f=>f.url))drop("cvcenter");
 const fc=DATA.cvFiles.find(f=>f.url);if(fc&&!DATA.cvUrl){$("#cv").href=fc.url;$("#cv").style.display=""}
 DATA.development.forEach(x=>{const d=el("div","cred");d.append(el("h3","",x.title),el("p","mono",[x.type,x.org,x.date].filter(Boolean).join(" · ")));if(x.url)d.append(link("View",x.url));$("#devgrid").append(d)});
-if(!DATA.development.length){const d=el("div","cred empty");d.append(el("h3","","Your first activity"),el("p","","Add workshops, training, presentations, conferences, or peer review to DATA.development, with a type, title, organization, and date."));$("#devgrid").append(d)}
+if(!DATA.development.length)drop("development");
 // insights and contact inquiries
 const AR=DATA.articles,ic=$("#icat"),iq=$("#iq");
 ic.append(new Option("All categories",""));[...new Set(AR.map(a=>a.category))].sort().forEach(c=>ic.append(new Option(c,c)));
 function note(t,h){const d=el("div","cred empty");d.append(el("h3","",t),el("p","",h));return d}
 function drawI(){const s=iq.value.toLowerCase().trim(),c=ic.value;
- if(!AR.length){$("#ilist").replaceChildren(note("First articles coming soon","Add articles to DATA.articles with a title, category, date, reading time, and summary."));return}
+ if(!AR.length){drop("insights");return}
  const L=AR.filter(a=>(!c||a.category===c)&&(!s||(a.title+" "+a.summary).toLowerCase().includes(s)));
  $("#ilist").replaceChildren(...(L.length?L.map(a=>{const d=el("div","cred");d.append(el("h3","",a.title),el("p","mono",[a.category,a.date,a.minutes?a.minutes+" min read":""].filter(Boolean).join(" · ")),el("p","",a.summary));if(a.url)d.append(link("Read",a.url));return d}):[note("No matches","Clear the search or choose All categories.")]))}
 [iq,ic].forEach(x=>x.addEventListener("input",drawI));drawI();
