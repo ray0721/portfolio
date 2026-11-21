@@ -3,6 +3,11 @@
 export const DATA: any = {
  email:"hmrayhan07@gmail.com",            // your verified contact email
  photo:"/rayhan.jpg",            // portrait image URL or path, e.g. "images/rayhan.jpg"
+  communityPhotos:[
+  {src:"/community-1.jpg",alt:"Prize distribution at a local kindergarten"},
+  {src:"/community-2.jpg",alt:"Certificates and prizes for students"},
+   {src:"/community-3.jpg",alt:"Certificates and prizes for students"},
+ ],
  cvUrl:"",            // link to your CV PDF
  links:{GitHub:"https://github.com/ray0721",LinkedIn:"https://www.linkedin.com/in/ray-07/","Google Scholar":"https://scholar.google.com/citations?hl=en&user=vi3qm9wAAAAJ",ORCID:"https://orcid.org/0009-0008-6413-5875",ResearchGate:"https://www.researchgate.net/profile/Md-Rayhan-Hossain-3","Tableau Public":"https://public.tableau.com/app/profile/md.rayhan.hossain3089/vizzes"},
  articles:[
