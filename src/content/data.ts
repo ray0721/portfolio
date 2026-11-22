@@ -9,10 +9,10 @@ export const DATA: any = {
   // {title:"",category:"Marketing Analytics",date:"",minutes:5,summary:"",url:""}   categories: AI, Business Analytics, Marketing Analytics, Machine Learning, Data Visualization, Research Methodology
  ],
  communityPhotos:[
-  {src:"/community-1.jpg",alt:"Prize distribution at a local kindergarten"},
-  {src:"/community-2.jpg",alt:"Certificates and prizes for students"},
-  {src:"/community-3.jpg",alt:"Prizes prepared for a kindergarten award event"},
-  {src:"/community-4.jpg",alt:"Prizes prepared for a kindergarten award event"},
+  {src:"/Community-1.jpg",alt:"Prize distribution at a local kindergarten"},
+  {src:"/Community-2.jpg",alt:"Certificates and prizes for students"},
+  {src:"/Community-3.jpg",alt:"Prizes prepared for a kindergarten award event"},
+  {src:"/Community-4.jpg",alt:"Prizes prepared for a kindergarten award event"},
  ],
  cvFiles:[
   {label:"Academic CV",desc:"Education, research, publications, and academic activities.",url:""},
