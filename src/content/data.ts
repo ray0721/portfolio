@@ -12,7 +12,6 @@ export const DATA: any = {
   {src:"/Community-1.jpg",alt:"Prize distribution at a local kindergarten"},
   {src:"/Community-2.jpg",alt:"Certificates and prizes for students"},
   {src:"/Community-3.jpg",alt:"Prizes prepared for a kindergarten award event"},
-  {src:"/Community-4.jpg",alt:"Prizes prepared for a kindergarten award event"},
  ],
  cvFiles:[
   {label:"Academic CV",desc:"Education, research, publications, and academic activities.",url:""},
