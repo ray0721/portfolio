@@ -8,7 +8,7 @@ export const DATA: any = {
  articles:[
   // {title:"",category:"Marketing Analytics",date:"",minutes:5,summary:"",url:""}   categories: AI, Business Analytics, Marketing Analytics, Machine Learning, Data Visualization, Research Methodology
  ],
- communityPhotos:[
+  communityPhotos:[
   {src:"/Community-1.jpg",alt:"Prize distribution at a local kindergarten"},
   {src:"/Community-2.jpg",alt:"Certificates and prizes for students"},
   {src:"/Community-3.jpg",alt:"Prizes prepared for a kindergarten award event"},
