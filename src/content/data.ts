@@ -3,16 +3,15 @@
 export const DATA: any = {
  email:"hmrayhan07@gmail.com",            // your verified contact email
  photo:"/rayhan.jpg",            // portrait image URL or path, e.g. "images/rayhan.jpg"
-  communityPhotos:[
-  {src:"/Community-1.jpg",alt:"Prize distribution at a local kindergarten"},
-  {src:"/Community-2.jpg",alt:"Certificates and prizes for students"},
-  {src:"/Community-3.jpg",alt:"Certificates and prizes for students"},
-  {src:"/Community-4.jpg",alt:"Certificates and prizes for students"},
- ],
  cvUrl:"",            // link to your CV PDF
  links:{GitHub:"https://github.com/ray0721",LinkedIn:"https://www.linkedin.com/in/ray-07/","Google Scholar":"https://scholar.google.com/citations?hl=en&user=vi3qm9wAAAAJ",ORCID:"https://orcid.org/0009-0008-6413-5875",ResearchGate:"https://www.researchgate.net/profile/Md-Rayhan-Hossain-3","Tableau Public":"https://public.tableau.com/app/profile/md.rayhan.hossain3089/vizzes"},
  articles:[
   // {title:"",category:"Marketing Analytics",date:"",minutes:5,summary:"",url:""}   categories: AI, Business Analytics, Marketing Analytics, Machine Learning, Data Visualization, Research Methodology
+ ],
+ communityPhotos:[
+  {src:"/community-1.jpg",alt:"Prize distribution at a local kindergarten"},
+  {src:"/community-2.jpg",alt:"Certificates and prizes for students"},
+  {src:"/community-3.jpg",alt:"Prizes prepared for a kindergarten award event"},
  ],
  cvFiles:[
   {label:"Academic CV",desc:"Education, research, publications, and academic activities.",url:""},
@@ -50,8 +49,12 @@ export const DATA: any = {
    abstract:"The paper proposes a two-branch neural network that predicts retail customer lifetime value by combining weekly purchase sequences with summary features through a learned per-household gate. It is tested on about 2.58 million grocery transactions from 2,500 households. At this sample size the summary features alone ranked customers slightly better than the full model, while gated fusion beat simple concatenation. Marketing channel features were weak predictors, yet matching and difference-in-differences analyses found a positive causal effect of omnichannel engagement on customer value."}
  ],
  credentials:[
-  {title:"SAP Student Recognition Award",issuer:"SAP University Alliances · Wright State University",date:"May 2026",note:"Recognition for satisfactory completion of an academic program supported by the SAP product portfolio.",url:""}
-  // add more: {title:"",issuer:"",date:"",note:"",url:"verification link"}
+  {group:"Recognition",title:"SAP Student Recognition Award",issuer:"SAP University Alliances · Wright State University",date:"May 2026",note:"Recognition for satisfactory completion of an academic program supported by the SAP product portfolio.",url:""},
+  {title:"Oracle NetSuite ERP System: Certificate of Attendance",issuer:"Oracle Academy · Wright State University",date:"Apr 2026",note:"Certificate of attendance for training on Oracle NetSuite ERP, focusing on how it integrates core business processes, financial management, and operational data. Issued April 9, 2026.",url:""},
+  {title:"MBTN Module Badges",issuer:"MBTN | Management By The Numbers",date:"Apr 2026",note:"Completed training in marketing analytics including web metrics, promotion profitability, new product forecasting, and customer lifetime value (CLV).",url:""},
+  {title:"Data Analysis with Tableau",issuer:"Tableau Learning Partner",date:"Jan 2026",note:"Credential ID ARV5O8MCOCLA. Topics include exploratory data analysis, regression analysis, and Tableau.",url:""},
+  {title:"SQL for Data Science with R",issuer:"IBM",date:"Dec 2025",note:"Credential ID 4VZHIUN31L56.",url:""},
+  {title:"Business Analytics with Excel",issuer:"Simplilearn",date:"Dec 2023",note:"Certificate of completion. Credential ID 4720326.",url:""}
  ],
  projects:[
   ["Customer Churn & Retention Analysis","Customer Analytics"],["Marketing Funnel Performance Dashboard","Marketing Analytics"],
