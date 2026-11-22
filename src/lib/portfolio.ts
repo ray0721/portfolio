@@ -40,8 +40,9 @@ cats.forEach(c=>{const b=el("button","chip",c);b.setAttribute("aria-pressed",c==
 // skills
 Object.entries(DATA.skills).forEach(([k,v])=>{const d=el("details");d.append(el("summary","",k));const u=el("ul");v.forEach(i=>u.append(el("li","",i)));d.append(u);$("#skillgrid").append(d)});
 // credentials
-DATA.credentials.forEach(c=>{const d=el("div","cred");d.append(el("h3","",c.title),el("p","mono",c.issuer+" · "+c.date),el("p","",c.note));
-if(c.url){const a=el("a","","Verify credential");a.href=c.url;a.target="_blank";a.rel="noopener noreferrer";d.append(a)}$("#creds").append(d)});
+["Recognition","Training and certificates"].forEach(g=>{const L=DATA.credentials.filter(c=>(c.group||"Training and certificates")===g);if(!L.length)return;$("#creds").append(el("h3","cgrp",g));
+L.forEach(c=>{const d=el("div","cred");d.append(el("h3","",c.title),el("p","mono",c.issuer+" · "+c.date),el("p","",c.note));
+if(c.url){const a=el("a","","Verify credential");a.href=c.url;a.target="_blank";a.rel="noopener noreferrer";d.append(a)}$("#creds").append(d)})});
 
 // publications
 const P=DATA.publications;
@@ -130,9 +131,11 @@ dds.forEach(d=>{const b=d.querySelector(".ddb");b.onclick=()=>{const o=!d.classL
 document.addEventListener("click",e=>{if(!e.target.closest(".dd"))closeAll()});
 document.querySelectorAll(".menu a").forEach(a=>a.addEventListener("click",()=>{hd.classList.remove("open");bg.setAttribute("aria-expanded","false");closeAll()}));
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){hd.classList.remove("open");closeAll()}});
-const cg=$("#cgal"),cph=DATA.communityPhotos||[];
-cph.slice(0,3).forEach(p=>{const i=new Image();i.src=p.src;i.alt=p.alt||"Community award event";i.loading="lazy";cg.append(i)});
-if(!cph.length)cg.remove();
+const cg=$("#cgal"),cph=(DATA.communityPhotos||[]).slice(0,3),lb=$("#lb");
+cg.className="cgal n"+cph.length;
+cph.forEach(p=>{const b=el("button","cph");b.setAttribute("aria-label","View photo larger");const i=new Image();i.src=p.src;i.alt=p.alt||"Community award event";i.loading="lazy";b.append(i);b.onclick=()=>{$("#lbi").src=p.src;$("#lbi").alt=i.alt;lb.showModal()};cg.append(b)});
+if(!cph.length){cg.remove();$("#kcard").classList.remove("kfeat")}
+$("#lbx").onclick=()=>lb.close();lb.addEventListener("click",()=>lb.close());
 
 const f=$("#cform");
 if(f){f.onsubmit=async e=>{e.preventDefault();const st=$("#cstatus");st.textContent="Sending...";
