@@ -8,10 +8,15 @@ export const DATA: any = {
  articles:[
   // {title:"",category:"Marketing Analytics",date:"",minutes:5,summary:"",url:""}   categories: AI, Business Analytics, Marketing Analytics, Machine Learning, Data Visualization, Research Methodology
  ],
-  communityPhotos:[
+ memberships:[
+  {org:"American Marketing Association",type:"Member",since:"Oct 2026",url:"https://www.ama.org",verify:"https://www.credly.com/badges/a7259ef1-37b1-4c8e-8aad-ee859c8bb7bd"}
+  // since: e.g. "Oct 2026"   verify: link to your Credly membership badge (shown as a Verify membership button)
+ ],
+ communityPhotos:[
   {src:"/Community-1.jpg",alt:"Prize distribution at a local kindergarten"},
   {src:"/Community-2.jpg",alt:"Certificates and prizes for students"},
   {src:"/Community-3.jpg",alt:"Prizes prepared for a kindergarten award event"},
+  {src:"/Community-4.jpg",alt:"Prizes and certificates at a kindergarten award event"},
  ],
  cvFiles:[
   {label:"Academic CV",desc:"Education, research, publications, and academic activities.",url:""},
