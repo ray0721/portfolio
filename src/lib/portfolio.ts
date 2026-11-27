@@ -131,13 +131,15 @@ dds.forEach(d=>{const b=d.querySelector(".ddb");b.onclick=()=>{const o=!d.classL
 document.addEventListener("click",e=>{if(!e.target.closest(".dd"))closeAll()});
 document.querySelectorAll(".menu a").forEach(a=>a.addEventListener("click",()=>{hd.classList.remove("open");bg.setAttribute("aria-expanded","false");closeAll()}));
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){hd.classList.remove("open");closeAll()}});
-const cg=$("#cgal"),cph=(DATA.communityPhotos||[]).slice(0,3),lb=$("#lb"),lx=$("#lbx"),kc=$("#kcard");
+const cg=$("#cgal"),cph=(DATA.communityPhotos||[]).slice(0,6),lb=$("#lb"),lx=$("#lbx"),kc=$("#kcard");
 if(cg&&lb&&lx&&kc){
 cg.className="cgal n"+cph.length;
-cph.forEach(p=>{const b=el("button","cph");b.setAttribute("aria-label","View photo larger");const i=new Image();i.src=p.src;i.alt=p.alt||"Community award event";i.loading="lazy";b.append(i);b.onclick=()=>{$("#lbi").src=p.src;$("#lbi").alt=i.alt;lb.showModal()};cg.append(b)});
+cph.forEach(p=>{const b=el("button","cph");b.setAttribute("aria-label","View photo larger");const i=new Image();i.src=p.src;i.alt=p.alt||"Community award event";i.loading="lazy";i.onerror=()=>b.remove();b.append(i);b.onclick=()=>{$("#lbi").src=p.src;$("#lbi").alt=i.alt;lb.showModal()};cg.append(b)});
 if(!cph.length){cg.remove();kc.classList.remove("kfeat")}
 lx.onclick=()=>lb.close();lb.addEventListener("click",()=>lb.close());
 }
+const mg=$("#mgrid"),mem=DATA.memberships||[];
+if(mg){mem.forEach(m=>{const d=el("div","cred");d.append(el("h3","",m.org),el("p","mono",[m.type,m.since?"Since "+m.since:""].filter(Boolean).join(" · ")));if(m.note)d.append(el("p","",m.note));const ac=el("div","acts");if(m.url)ac.append(link("Visit organization",m.url));if(m.verify)ac.append(link("Verify membership",m.verify));if(ac.children.length)d.append(ac);mg.append(d)});if(!mem.length)drop("memberships")}
 
 const f=$("#cform");
 if(f){f.onsubmit=async e=>{e.preventDefault();const st=$("#cstatus");st.textContent="Sending...";
